@@ -9,5 +9,6 @@ cp -rf ./public ./build/stage
 ./build/compile-inc.sh $1
 
 rm -rf ./build/stage/public/js/lib
+rm -f ./build/stage/public/web.config
 cp -rf ./build/stage/public ./build
 rm -rf ./build/stage

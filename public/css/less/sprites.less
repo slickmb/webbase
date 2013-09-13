@@ -1,0 +1,68 @@
+
+
+.sprite-base() {
+  background-repeat: no-repeat;
+
+  a& {
+    text-decoration: none;
+
+    display: inline-block;
+    text-indent: -9999px;
+  }
+}
+
+.sprite {
+  .sprite-base();
+
+  &.social {
+    width: 25px;
+    height: 25px;
+
+    background-image: url('/img/core/social.png');
+
+    a& {
+      margin: 1px;
+
+      .transition(opacity 0.5s);
+
+      &:hover {
+        .opacity(0.5);
+        .transition(opacity 0.5s);
+      }
+    }
+
+    &.youtube {
+      background-position: 0 -50px;
+    }
+
+    &.facebook {
+      background-position: 0 0;
+    }
+
+    &.twitter {
+      background-position: 0 -25px;
+    }
+  }
+}
+
+.bx-controls-sprite() {
+  .sprite-base();
+
+  background-image: url('/img/lib/controls.png');
+  width: 32px;
+  height: 32px;
+}
+
+.bx-controls {
+  .bx-prev {
+    .bx-controls-sprite();
+    background-position: 0 -32px;
+  }
+
+  .bx-next {
+    .bx-controls-sprite();
+    background-position: -43px -32px;
+  }
+
+}
+

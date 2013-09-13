@@ -1,0 +1,13 @@
+@font-start-size: 16;
+
+.font-size(@new, @start: @font-start-size) {
+  font-size: (1em * @new / @start);
+}
+
+.line-height(@new, @start: @font-start-size) {
+  line-height: (1em * @new / @start);
+}
+
+body {
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+}

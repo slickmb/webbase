@@ -2,10 +2,11 @@ echo expanding less source
 mkdir -p ./build/stage/less
 unzip -q -o -d ./build/stage/less -- ./lib/Less/less.js-master.zip
 
-./bin/NodeJS/node.exe ./build/stage/less/less.js-master/bin/lessc --x ./build/stage/public/css/less/main.less > ./build/stage/public/css/main.css
+./bin/NodeJS/node.exe ./build/stage/less/less.js-master/bin/lessc -x ./build/stage/public/css/less/main.less > ./build/stage/public/css/main.css
 
 echo removing less files.
 rm -rf ./build/stage/public/css/less
+rm -rf ./build/stage/public/css/lib
 
 echo removing lib script
 rm -f ./build/stage/public/js/lib/less-1.3.3.min.js

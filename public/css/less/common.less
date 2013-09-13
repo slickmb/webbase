@@ -1,0 +1,160 @@
+
+@site-margin: 5%;
+@site-margin-top: 20px;
+@site-margin-left: @site-margin;
+@site-margin-right: @site-margin;
+@site-margin-bottom: 10px;
+
+@z-indexRaised: 1;
+@z-indexMenu: 10;
+@z-indexToolTip: 20;
+
+
+
+
+.clearfix {
+  &:before, &:after {
+    content:"";
+    display:table;
+  }
+
+  &:after {
+    clear:both;
+  }
+
+  zoom: 1;
+}
+
+
+.anchor(@top:0, @right:0, @bottom:0, @left:0) {
+  position: absolute;
+  top: @top;
+  right: @right;
+  bottom: @bottom;
+  left: @left;
+}
+
+// ie gradient filters are not compatible with border radius.
+.gradient-radius() {
+  .no-cssgradients & {
+    filter: none;
+  }
+}
+
+.border-radius-forced(@radius) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  border-radius: @radius;
+
+  .gradient-radius;
+}
+
+
+
+.border-radius(@radius) {
+  //.border-radius-forced(@radius);
+  .border-radius-forced(0px);
+  @media only screen and (max-width: 480px) {
+    .border-radius-forced(0px);
+  }
+}
+
+.box-shadow-forced(@params) {
+  //todo: figure out why this is not showing up in IE9
+  -webkit-box-shadow: @params;
+  box-shadow: @params;
+}
+
+.box-shadow(@params) {
+  .box-shadow-forced(@params);
+
+  @media only screen and (max-width: 480px) {
+    .box-shadow-forced(none);
+  }
+}
+
+
+.gradient-h(@start-color, @end-color) {
+  background: -moz-linear-gradient(left, @start-color 0%, @end-color 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,@start-color), color-stop(100%,@end-color)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left, @start-color 0%, @end-color 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left, @start-color 0%,@end-color 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(left, @start-color 0%, @end-color 100%); /* IE10+ */
+  background: linear-gradient(to right, @start-color 0%, @end-color 100%); /* W3C */
+
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=%('%a', argb(@start-color)), endColorstr=%('%a', argb(@end-color)),GradientType=1 ); /* IE6-8 */
+}
+
+.gradient-v(@start-color, @end-color) {
+  background: -moz-linear-gradient(top, @start-color 0%, @end-color 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left top, color-stop(0%,@start-color), color-stop(100%,@end-color)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, @start-color 0%, @end-color 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, @start-color 0%,@end-color 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, @start-color 0%, @end-color 100%); /* IE10+ */
+  background: linear-gradient(to bottom, @start-color 0%, @end-color 100%); /* W3C */
+
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=%('%a', argb(@start-color)), endColorstr=%('%a', argb(@end-color)),GradientType=0 ); /* IE6-8 */
+}
+
+
+.opacity(@value) {
+
+  @ms-value: (@value * 100);
+
+/* IE 8 */
+  -ms-filter: ~"progid:DXImageTransform.Microsoft.Alpha(Opacity=@{ms-value})";
+
+/* IE 5-7 */
+  filter: ~"alpha(opacity=@{ms-value})";
+
+/* Netscape */
+  -moz-opacity: @value;
+
+/* Safari 1.x */
+  -khtml-opacity: @value;
+
+/* Good browsers */
+  opacity: @value;
+}
+
+.ul-horizontal {
+  list-style: none inside;
+  margin: 0;
+  padding: 0;
+
+  & > li {
+    display: inline-block;
+  }
+}
+
+.transition(@value) {
+  -webkit-transition: @value;
+  -moz-transition: @value;
+  -o-transition: @value;
+  transition: @value;
+}
+
+.transform(@value) {
+  -webkit-transform: @value;
+  -ms-transform: @value;
+  transform: @value;
+}
+
+
+
+body {
+  /*
+  margin: @site-margin-top @site-margin-right @site-margin-bottom @site-margin-left;
+  border: 2px solid fade(black, 25%);
+  //overflow: hidden;
+  .box-shadow(0px 0px 5px 2px fade(black, 25%));
+  .border-radius(5px 5px 5px 5px);
+  */
+  margin: 0px;
+  border: none;
+
+  @media only screen and (max-width: 480px) {
+    margin: 0px;
+    border: none;
+  }
+}

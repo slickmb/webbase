@@ -1,7 +1,10 @@
-rm -rf ./build/public
+mkdir -p ./build/public
+
+rm -rf ./build/public/*
 rm -rf ./build/stage
 
 mkdir -p ./build/stage
+
 cp -rf ./public ./build/stage
 
 ./build/compile-less.sh $1
@@ -10,5 +13,6 @@ cp -rf ./public ./build/stage
 
 rm -rf ./build/stage/public/js/lib
 rm -f ./build/stage/public/web.config
-cp -rf ./build/stage/public ./build
+mv ./build/stage/public/web.build.config ./build/stage/public/web.config
+cp -rf ./build/stage/public/* ./build/public
 rm -rf ./build/stage

@@ -11,5 +11,9 @@ rm -rf ./build/stage/public/css/lib
 echo removing lib script
 rm -f ./build/stage/public/js/lib/less-1.3.3.min.js
 
+version=`git rev-parse --short HEAD`
+echo versioning main.css to $version
+mv  ./build/stage/public/css/main.css  ./build/stage/public/css/main-${version}.css
+
 echo running sed
-sed -i -e "s/\"stylesheet\/less\"/\"stylesheet\"/" -e "s/css\/less\/main\.less/css\/main.css/" -e "/<script.*js\/lib\/less[^\"]*\.js/d" ./build/stage/public/inc/head.inc
+sed -i -e "s/\"stylesheet\/less\"/\"stylesheet\"/" -e "s/css\/less\/main\.less/css\/main-${version}.css/" -e "/<script.*js\/lib\/less[^\"]*\.js/d" ./build/stage/public/inc/head.inc

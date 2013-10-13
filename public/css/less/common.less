@@ -1,16 +1,4 @@
 
-@site-margin: 5%;
-@site-margin-top: 20px;
-@site-margin-left: @site-margin;
-@site-margin-right: @site-margin;
-@site-margin-bottom: 10px;
-
-@z-indexRaised: 1;
-@z-indexMenu: 10;
-@z-indexToolTip: 20;
-
-
-
 
 .clearfix {
   &:before, &:after {
@@ -52,11 +40,7 @@
 
 
 .border-radius(@radius) {
-  //.border-radius-forced(@radius);
-  .border-radius-forced(0px);
-  @media only screen and (max-width: 480px) {
-    .border-radius-forced(0px);
-  }
+  .border-radius-forced(@radius);
 }
 
 .box-shadow-forced(@params) {
@@ -67,10 +51,6 @@
 
 .box-shadow(@params) {
   .box-shadow-forced(@params);
-
-  @media only screen and (max-width: 480px) {
-    .box-shadow-forced(none);
-  }
 }
 
 
@@ -94,6 +74,18 @@
   background: linear-gradient(to bottom, @start-color 0%, @end-color 100%); /* W3C */
 
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=%('%a', argb(@start-color)), endColorstr=%('%a', argb(@end-color)),GradientType=0 ); /* IE6-8 */
+}
+
+
+.gradient-v(@start-color, @mid-color, @end-color) {
+  background: -moz-linear-gradient(top, @start-color 0%, @mid-color 50%, @end-color 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left top, color-stop(0%,@start-color), color-stop(50%,@mid-color), color-stop(100%,@end-color)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, @start-color 0%, @mid-color 50%, @end-color 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, @start-color 0%, @mid-color 50%,@end-color 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, @start-color 0%, @mid-color 50%, @end-color 100%); /* IE10+ */
+  background: linear-gradient(to bottom, @start-color 0%, @mid-color 50%, @end-color 100%); /* W3C */
+
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=%('%a', argb(@start-color)), endColorstr=%('%a', argb(@mid-color)),GradientType=0 ); /* IE6-8 */
 }
 
 
@@ -127,6 +119,12 @@
   }
 }
 
+.ul-vertical {
+  list-style: none inside;
+  margin: 0;
+  padding: 0;
+}
+
 .transition(@value) {
   -webkit-transition: @value;
   -moz-transition: @value;
@@ -142,19 +140,3 @@
 
 
 
-body {
-  /*
-  margin: @site-margin-top @site-margin-right @site-margin-bottom @site-margin-left;
-  border: 2px solid fade(black, 25%);
-  //overflow: hidden;
-  .box-shadow(0px 0px 5px 2px fade(black, 25%));
-  .border-radius(5px 5px 5px 5px);
-  */
-  margin: 0px;
-  border: none;
-
-  @media only screen and (max-width: 480px) {
-    margin: 0px;
-    border: none;
-  }
-}
